@@ -1,0 +1,20 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV.fetch("TEST_TURBO_WITH_ADVANCE_DATABASE_HOST") { "localhost" } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("TEST_TURBO_WITH_ADVANCE_DATABASE_USERNAME") { "test_turbo_with_advance" } %>
+  password: <%= ENV["TEST_TURBO_WITH_ADVANCE_DATABASE_PASSWORD"] %>
+  port: <%= ENV.fetch("TEST_TURBO_WITH_ADVANCE_DATABASE_PORT") { "5432" } %>
+
+development:
+  <<: *default
+  database: test_turbo_with_advance_development
+test:
+  <<: *default
+  database: test_turbo_with_advance_test
+production:
+  <<: *default
+  database: test_turbo_with_advance_production
