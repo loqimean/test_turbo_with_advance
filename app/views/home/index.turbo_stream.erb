@@ -1,0 +1,5 @@
+<%= turbo_stream.replace(:test) do %>
+  <%= turbo_frame_tag :test, data: { mutate_on_connect: true, controller: "turbo-frame-history" } do %>
+    <%= link_to "Clicked me #{Time.now}", home_index_path(time: Time.now.to_s.parameterize), data: { turbo_stream: true } %>
+  <% end %>
+<% end %>
